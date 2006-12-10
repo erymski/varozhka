@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using Varozhka.TrainingData;
 using Varozhka.UI.Properties;
@@ -334,10 +335,10 @@ namespace Varozhka.UI
         /// <returns></returns>
         private void AsyncCheckForUpdates()
         {
-#if true
+#if false // debugging - checking in sync mode
             CheckForUpdates(null);
 #else
-            return ThreadPool.QueueUserWorkItem(new WaitCallback(CheckForUpdates));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(CheckForUpdates));
 #endif
         }
 
@@ -347,21 +348,20 @@ namespace Varozhka.UI
             bool updateAvailable = checker.IsUpdateAvailable(new Version(Application.ProductVersion), UpdatesUrls.Version);
             if (updateAvailable)
             {
-                GoToUpdatesPage(UpdatesUrls.ChangeLog, "Update is available. Do you want to go to downloads page?", "Foo");
+                GoToUpdatesPage(UpdatesUrls.ChangeLog, "Update is available. Do you want to go to downloads page?");
             }
         }
 
-        private delegate void GoToUpdatesPageDelegate(string urlChangeLog, string question, string title);
-        private void GoToUpdatesPage(string urlChangeLog, string question, string title)
+        private delegate void GoToUpdatesPageDelegate(string urlChangeLog, string question);
+        private void GoToUpdatesPage(string urlChangeLog, string question)
         {
             if (InvokeRequired)
             {
-                //Trace.WriteLine("Invoking main thread");
-                Invoke(new GoToUpdatesPageDelegate(GoToUpdatesPage), new object[] { urlChangeLog, question, title });
+                Invoke(new GoToUpdatesPageDelegate(GoToUpdatesPage), new object[] { urlChangeLog, question });
             }
             else
             {
-                DialogResult result = MessageBox.Show(question, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                DialogResult result = MessageBox.Show(question, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                                                       MessageBoxDefaultButton.Button1);
                 if (DialogResult.Yes == result)
                 {
