@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Import", "Import.csproj", "{90A4D4E0-83E0-49A6-81C3-DF75FACDDF52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "..\Storage\Storage.csproj", "{28E06CFA-56F5-4348-8FBC-03B9E0A98C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingData", "..\TrainingData\TrainingData.csproj", "{05CC34BA-14F4-4975-8EA7-8E91E156A92D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90A4D4E0-83E0-49A6-81C3-DF75FACDDF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A4D4E0-83E0-49A6-81C3-DF75FACDDF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A4D4E0-83E0-49A6-81C3-DF75FACDDF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A4D4E0-83E0-49A6-81C3-DF75FACDDF52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E06CFA-56F5-4348-8FBC-03B9E0A98C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E06CFA-56F5-4348-8FBC-03B9E0A98C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E06CFA-56F5-4348-8FBC-03B9E0A98C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E06CFA-56F5-4348-8FBC-03B9E0A98C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05CC34BA-14F4-4975-8EA7-8E91E156A92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05CC34BA-14F4-4975-8EA7-8E91E156A92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05CC34BA-14F4-4975-8EA7-8E91E156A92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05CC34BA-14F4-4975-8EA7-8E91E156A92D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
