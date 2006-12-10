@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--EXTERNAL_PROPERTIES: dir.svn_bin_dir;url.svn;dir.builds-->
+<project name="Varozka builder" default="build" xmlns="http://nant.sf.net/release/0.85-rc4/nant.xsd">
+
+  <!-- read settings-->
+  <property name="file.settings" value="settings.include" readonly="true"/>
+  
+  <fail if="${not file::exists(file.settings)}" message="Settings file is not specified!"/>
+  <include buildfile="${file.settings}"/>
+
+  <!-- define local properties-->
+  <property name="dir.build" value="${path::combine(path::get-temp-path(), 'varozhka')}"/>
+  <property name="dir.compiled" value="${path::combine(dir.build, 'Sources\Dummy\bin\Release')}"/>
+  
+  <property name="file.msbuild" value="${path::combine(framework::get-framework-directory('net-2.0'), 'msbuild.exe')}"/>
+  <property name="file.varozhka_solution" value="${path::combine(dir.build, 'Sources\VarozhkaCore.sln')}"/>
+  <property name="file.assembly_with_version" value="${path::combine(dir.compiled, 'Varozhka.UI.exe')}"/>
+
+  <!-- main target -->
+  <target name="build" depends="cleanup">
+
+    <mkdir dir="${dir.build}"/>
+    <call target="svn_export" />
+
+    <exec program="${file.msbuild}">
+      <arg value="${file.varozhka_solution}"/>
+      <arg value="/property:Configuration=Release" />
+    </exec>
+
+    <property name="varozhka.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(file.assembly_with_version))}"/>
+
+    <!-- generate distribution -->
+    <property name="dir.build_results" value="${path::combine(dir.builds, varozhka.version)}"/>
+
+    <property name="dir.distribution" value="${path::combine(dir.build_results, 'distribution')}" />
+    <property name="dir.updates" value="${path::combine(dir.build_results, 'updates')}" />
+    
+    <fail if="${directory::exists(dir.build_results)}" message="Build with the same version already exists."/>
+    <mkdir dir="${dir.build_results}"/>
+
+    <!-- copy assemblies-->
+    <copy todir="${dir.distribution}" includeemptydirs="true">
+      <fileset basedir="${dir.compiled}">
+        <exclude name="Dummy.*"/>
+        <include name="*.exe"/>
+        <include name="*.dll"/>
+      </fileset>
+    </copy>
+
+    <!-- copy samples -->
+    <property name="dir.dest.samples" value="${path::combine(dir.distribution, 'Samples')}"/>
+    <property name="dir.src.samples" value="${path::combine(dir.build, 'Sources\Samples')}"/>
+    <copy todir="${dir.dest.samples}" includeemptydirs="true">
+      <fileset basedir="${dir.src.samples}">
+        <include name="**/*.*"/>
+      </fileset>
+    </copy>
+
+    <!-- copy docs -->
+    <property name="dir.src.docs" value="${path::combine(dir.build, 'Docs')}"/>
+    <copy file="${path::combine(dir.src.docs, 'readme.txt')}" todir="${dir.distribution}" />
+
+    <zip zipfile="${path::combine(dir.build_results, 'varozhka_' + varozhka.version + '.zip')}"
+          comment="Built on ${datetime::to-string(datetime::now())}" ziplevel="9" includeemptydirs="true" >
+      <fileset basedir="${dir.distribution}">
+        <include name="**/*.*"/>
+      </fileset>
+    </zip>
+
+    <!-- generate file for Updates system -->
+    <echo file="${path::combine(dir.updates, 'current_version.txt')}" message="${varozhka.version}"/>
+
+    <call target="cleanup" />
+  </target>
+
+  <target name="svn_export" description="Get sources">
+
+    <exec program="svn.exe" basedir="${dir.svn_bin_dir}">
+      <arg value="export" />
+      <arg value="${url.svn}" />
+      <arg value="${dir.build}" />
+      <arg value="--force" />
+    </exec>
+  </target>
+
+  <!-- delete all temporary stuff -->
+  <target name="cleanup">
+    <delete dir="${dir.build}" if="${directory::exists(dir.build)}"/>
+  </target>
+
+</project>

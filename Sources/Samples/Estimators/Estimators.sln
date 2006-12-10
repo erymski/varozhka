@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyEstimator", "cs\DummyEstimator\DummyEstimator.csproj", "{43F06730-3D86-4250-B7EA-6B1A6E5B94AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cs", "cs", "{D8C760D9-DB7A-41D0-AC71-3DA580565B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageRatingEstimator", "cs\AverageRatingEstimator\AverageRatingEstimator.csproj", "{792F9B4C-C7D2-4153-8135-AD7E7BD40889}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vb", "vb", "{D9BF5B7F-5523-4CBD-B76E-13B594A40D57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43F06730-3D86-4250-B7EA-6B1A6E5B94AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F06730-3D86-4250-B7EA-6B1A6E5B94AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F06730-3D86-4250-B7EA-6B1A6E5B94AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F06730-3D86-4250-B7EA-6B1A6E5B94AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792F9B4C-C7D2-4153-8135-AD7E7BD40889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792F9B4C-C7D2-4153-8135-AD7E7BD40889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792F9B4C-C7D2-4153-8135-AD7E7BD40889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792F9B4C-C7D2-4153-8135-AD7E7BD40889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{43F06730-3D86-4250-B7EA-6B1A6E5B94AD} = {D8C760D9-DB7A-41D0-AC71-3DA580565B45}
+		{792F9B4C-C7D2-4153-8135-AD7E7BD40889} = {D8C760D9-DB7A-41D0-AC71-3DA580565B45}
+	EndGlobalSection
+EndGlobal

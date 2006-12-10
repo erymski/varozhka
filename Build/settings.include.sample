@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="Settings for Varozhka builder" default="build" 
+          xmlns="http://nant.sf.net/release/0.85-rc4/nant.xsd">
+
+  <property name="dir.svn_bin_dir" value="C:\Utils\svn-win32-1.3.2\bin" readonly="true" />
+  <property name="url.svn" value="file:///C:/local_svn_repo/trunk/Netflix" readonly="true" />
+  <property name="dir.builds" value="C:\Releases\varozhka"/>
+
+
+</project>
