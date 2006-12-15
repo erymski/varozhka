@@ -20,4 +20,4 @@ http://msdn.microsoft.com/vstudio/express/.
 
 
 Homepage of the project:
-http://www.digizzle.com/Projects/Varozka/Default.aspx
+http://www.digizzle.com/Projects/Varozhka/Default.aspx
