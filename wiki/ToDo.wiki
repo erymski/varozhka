@@ -10,7 +10,6 @@ This is unsorted list of different _todo_ items.
 The project was released in hurry, so some things are done in quick-and-dirty way. And
 this is an attempt to not forget about them :)
 
-To do:
  * processing progress should be re-designed
  * versioning of indexes
  * add docs to distribution
