@@ -11,7 +11,7 @@ The project was released in hurry, so some things are done in quick-and-dirty wa
 this is an attempt to not forget about them :)
 
 To do:
-* processing progress should be re-designed
-* versioning of indexes
-* add docs to distribution
-* reduce size of allocated memory
+ * processing progress should be re-designed
+ * versioning of indexes
+ * add docs to distribution
+ * reduce size of allocated memory
