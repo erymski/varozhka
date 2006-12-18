@@ -14,3 +14,4 @@ this is an attempt to not forget about them :)
  * versioning of indexes
  * add docs to distribution
  * reduce size of allocated memory
+ * BinarySearch should not use PackedInt.Compare(). it's slow
